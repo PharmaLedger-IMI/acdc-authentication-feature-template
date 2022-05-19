@@ -1,6 +1,4 @@
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
-import versionTransformerUtils from '../../../../../gtin-resolver/lib/EpiVersionTransformer.js';
-
 
 const {WebcController} = WebCardinal.controllers;
 
@@ -60,7 +58,7 @@ const getProductInfo = function(gtin, callback){
     resolver.loadDSU(keySSI, (err, dsu) => {
         if (err)
             return callback(err);
-        dsu.readFile(versionTransformerUtils.getProductPath(1), (err, product) => {
+        dsu.readFile(gtinResolver.versionTransformer.getProductPath(1), (err, product) => {
             if (err)
                 return callback(err);
             try{
@@ -80,7 +78,7 @@ const getBatchInfo = function(gtin, batchNumber,  callback){
     resolver.loadDSU(keySSI, (err, dsu) => {
         if (err)
             return callback(err);
-        dsu.readFile(versionTransformerUtils.getBatchPath(1), (err, batch) => {
+        dsu.readFile(gtinResolver.versionTransformer.getBatchPath(1), (err, batch) => {
             if (err)
                 return callback(err);
             try{
