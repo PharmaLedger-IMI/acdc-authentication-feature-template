@@ -1,0 +1,65 @@
+{
+  "workDir": ".",
+  "dependencies": [
+  ],
+  "prebuild": [
+    {
+      "name": "PSK bundles",
+      "src": "",
+      "actions": [
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/pskruntime.js",
+          "target": "src/code/constitution/pskruntime.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/webshims.js",
+          "target": "src/code/constitution/webshims.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/pskruntime.js",
+          "target": "src/code/scripts/bundles/pskruntime.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/webshims.js",
+          "target": "src/code/scripts/bundles/webshims.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/iframeBoot.js",
+          "target": "src/code/scripts/bundles/iframeBoot.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../gtin-resolver/build/bundles/gtinResolver.js",
+          "target": "src/code/scripts/bundles/gtinResolver.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "remove",
+          "target": "./builds"
+        }
+      ]
+    }
+  ]
+}
