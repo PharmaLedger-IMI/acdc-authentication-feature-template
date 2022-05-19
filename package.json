@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Authentication Feature Template",
   "scripts": {
-    "prebuild": "node ./../node_modules/octopus/scripts/run prebuild devmode",
     "build": "node ./../node_modules/octopus/scripts/buildDossier ./bin/build.file",
-    "postbuild": "node ./../node_modules/octopus/scripts/run postbuild devmode",
     "update": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +15,9 @@
     "pharmaledger",
     "ssapp"
   ],
+  "devDependencies": {
+    "@ionic/core": "^5.9.4"
+  },
   "license": "MIT",
   "homepage": "https://github.com/PharmaLedger-IMI/acdc-authentication-feature-template"
 }

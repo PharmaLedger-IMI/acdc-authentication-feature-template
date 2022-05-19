@@ -1,4 +1,6 @@
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
+import versionTransformerUtils from '../../../../../gtin-resolver/lib/EpiVersionTransformer.js';
+
 
 const {WebcController} = WebCardinal.controllers;
 
@@ -53,12 +55,12 @@ const getQueryStringParams = () => {
 
 const getProductInfo = function(gtin, callback){
     const gtinResolver = require('gtin-resolver');
-    const keySSI = gtinResolver.createGTIN_SSI('epi', 'epi', gtin);
+    const keySSI = gtinResolver.createGTIN_SSI('epi', undefined, gtin);
     const resolver = require('opendsu').loadApi('resolver');
     resolver.loadDSU(keySSI, (err, dsu) => {
         if (err)
             return callback(err);
-        dsu.readFile('product/product.json', (err, product) => {
+        dsu.readFile(versionTransformerUtils.getProductPath(1), (err, product) => {
             if (err)
                 return callback(err);
             try{
@@ -73,12 +75,12 @@ const getProductInfo = function(gtin, callback){
 
 const getBatchInfo = function(gtin, batchNumber,  callback){
     const gtinResolver = require('gtin-resolver');
-    const keySSI = gtinResolver.createGTIN_SSI('epi', 'epi', gtin, batchNumber);
+    const keySSI = gtinResolver.createGTIN_SSI('epi', undefined, gtin, batchNumber);
     const resolver = require('opendsu').loadApi('resolver');
     resolver.loadDSU(keySSI, (err, dsu) => {
         if (err)
             return callback(err);
-        dsu.readFile('batch/batch.json', (err, batch) => {
+        dsu.readFile(versionTransformerUtils.getBatchPath(1), (err, batch) => {
             if (err)
                 return callback(err);
             try{
