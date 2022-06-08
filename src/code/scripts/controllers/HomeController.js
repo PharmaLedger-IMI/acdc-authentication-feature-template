@@ -164,7 +164,7 @@ export default class HomeController extends WebcController{
     }
 
     report(status, error){
-        const event = new CustomEvent('windowAction', {
+        const event = new CustomEvent('ssapp-action', {
             bubbles: true,
             cancelable: true,
             detail: new AuthFeatureResponse(status, error)
